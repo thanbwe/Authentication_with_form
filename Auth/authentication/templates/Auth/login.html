@@ -1,0 +1,28 @@
+<h2>Login</h2>
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form method="post" novalidate>
+  {% csrf_token %}
+  
+  <div>
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required autofocus>
+  </div>
+  
+  <div style="margin-top: 1em;">
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required>
+  </div>
+  
+  <div style="margin-top: 1.5em;">
+    <button type="submit">Login</button>
+  </div>
+</form>
+
