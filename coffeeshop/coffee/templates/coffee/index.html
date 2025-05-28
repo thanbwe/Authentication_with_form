@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} home {% endblock %}
+
+{% block content %}
+<h2 class="text-center p-2">Feel Good Coffee</h2>
+
+<div class="col-4">
+    <a class="btn btn-success" href="{% url 'coffee_create' %}">Add Coffee</a>
+</div>
+<div class="col-8"></div>
+
+{% for coffee in coffees %}
+{{ error }}
+<div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+    <div class="card">
+        <img width="100%" height="80%" src="{{ coffee.image.url }}" class="card-image-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">{{ coffee.name }}</h5>
+            <p class="card-text">{{ coffee.price }} MMK</p>
+            <a href="" class="btn btn-outline-dark btn-sm me-5">Add to cart</a>
+            <a href="{% url 'coffee_update' coffee.id %}" class="text-warning m-2"><i class="fa-solid fa-pen"></i></a>
+            <a href="{% url 'coffee_delete' coffee.id %}" onclick="return confirm('Are you sure Delete?')" class="text-danger ms-3"><i class="fa-solid fa-trash"></i></a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
